@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div><img src="" id="imgg" title="basic image" alt="basic image" width="100" /></div>
+<script>
+
+  // adding event listener to window object so that is can get message from different site
+  window.addEventListener("message", function(e){
+
+      // check if the message send if form reliable domain
+      if(e.origin == 'http://test.dev'){
+          document.getElementById("imgg").src = "img/"+e.data
+
+          // Sending a reply to parent site
+          event.source.postMessage("Thank you", 'http://test.dev');
+      }
+
+  }, false);
+
+</script>
+</body>
+</html>

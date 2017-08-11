@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSD to HTML</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--<script type="application/javascript" src="https://raw.githubusercontent.com/axemclion/IndexedDBShim/master/dist/indexeddbshim.min.js"></script>-->
+  <!--<script type="application/javascript" src="js/indexeddbshim.min.js"></script>-->
+
+  <script>
+
+/*
+      // database opened or created
+      var idb = indexedDB.open('myindexdb', 1);
+      var databaseObj;
+
+      // show result on success
+      idb.onsuccess = function (successEvent) {
+          databaseObj = successEvent.target.result;
+          console.log(databaseObj)
+      };
+
+      // adding values
+      idb.onupgradeneeded = function (event) {
+          try {
+              event.target.result.createObjectStore(
+                  ['entries'],
+                  {keyPath: 'entrydate'} // autoincrement and it is time stamp
+              );
+          } catch (error) {
+          }
+      };
+
+      // show error
+      idb.error = function (error) {
+          console.log(error)
+      }
+*/
+
+      //////////////////////////////////////////////////////////////////////
+
+      /*
+
+       // getting indexeddb
+       window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+
+       // transaction object
+       window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+       // key range object
+       window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange
+
+       // checking indexeddb
+       if (!window.indexedDB) {
+       window.alert("Your browser doesn't support a stable version of IndexedDB.")
+       }
+
+       var db;
+       // open db with 1 version
+       var request = window.indexedDB.open('mydb', 1);
+
+       // open db error
+       request.onerror = function (error) {
+       console.log("Error " + error);
+       }
+
+       // open db success
+       request.onsuccess = function (event) {
+       db = request.result;
+       console.log("success " + db);
+       }
+
+       ////////////////////
+
+       // will be called with the browser loaded
+       // so crate the the table with index as "id", it can be timestamp as well
+       request.onupgradeneeded = function (event) {
+       var db = event.target.result;
+       var objectStore = db.createObjectStore("employee", {keyPath: "id"})
+       }
+
+
+       // accessing table/transaction to read or write
+       function getTable(readwrite) {
+       if (readwrite == undefined) {
+       return db.transaction(['employee'])
+       .objectStore('employee') // selecting table
+       } else {
+       return db.transaction(['employee'], 'readwrite')
+       .objectStore('employee') // selecting table
+       }
+       }
+
+       function add(name) {
+
+       // getting table object
+       var req = getTable(true);
+
+       // adding index and value
+       var r = req.add({"id": new Date().getTime(), "name": name});
+
+       // adding success message handler
+       r.onsuccess = function (event) {
+       alert("added to your database.");
+       };
+
+       // adding error message handler
+       r.onerror = function (event) {
+       alert("error while adding!");
+       }
+       }
+
+       function remove(del) {
+       // getting table object
+       var req = getTable(true);
+
+       var r = req.delete(del);
+
+       // remove success message handler
+       r.onsuccess = function (event) {
+       alert("removed from database.");
+       };
+
+       // remove error message handler
+       r.onerror = function (event) {
+       alert("error while removing!");
+       }
+       }
+
+
+       function readAll() {
+       var objectStore = getTable();
+
+       objectStore.openCursor().onsuccess = function (event) {
+       var cursor = event.target.result;
+
+       if (cursor) {
+       console.log("Name for id " + cursor.key + " is " + cursor.value.name);
+       cursor.continue();
+       }
+
+       else {
+       console.log("No more entries!");
+       }
+       };
+       }
+
+       function get(id) {
+       var req = getTable();
+
+       var r = req.get(id);
+
+       r.onerror = function () {
+       console.log('error');
+       }
+
+       r.onsuccess = function () {
+       if (r.result) {
+       console.log("Name for id " + r.result.id + " is " + r.result.name);
+       }
+       else {
+       console.log("Id not exist")
+       }
+       }
+       }
+       */
+
+  </script>
+
+  <script>
+
+      /**
+       * Web-worker
+       */
+      /*
+       // registering web-worker
+       // this js will have event listener to listen to the message send to it
+       var worker = new Worker("myworker.js")
+
+       // sending message to web-worker
+       worker.postMessage({place: "Rwp"});
+
+       // listening to message which will be sent form web-worker
+       worker.addEventListener("message", function (e) {
+       console.log(e.data)
+       })
+
+       // listening for errors
+       worker.addEventListener('error', function (err) {
+       console.log(err);
+       })
+
+       // always terminate, to free the resources
+       worker.terminate();
+       */
+  </script>
+
+  <script>
+
+      /**
+       * Navigator object
+       */
+      /*
+       // getting current users position, 2 callback method
+       navigator.geolocation.getCurrentPosition(success, error);
+
+       // Success callback
+       function success(position) {
+       console.log(position.coords.longitude + " :: " + position.coords.latitude)
+       }
+
+       // Error callback
+       function error(error) {
+       var msg = "";
+       switch (error.code) {
+       case 1:
+       msg = "Permission denied by user";
+       break;
+       case 2:
+       msg = "Position unavailable";
+       break;
+       case 3:
+       msg = "Request Timed out";
+       break;
+       }
+       console.log("Oh snap!! Error logged: " + msg);
+       }
+       */
+
+  </script>
+
+
+  <script>
+
+      /**
+       * Server sent event
+       */
+
+      // checking support for server send object
+      if (!!window.EventSource) {
+
+          // connecting to server send file
+          var eventSource = new EventSource("http://test.dev/source.php");
+
+          // adding listener to receive message
+          eventSource.addEventListener("message", function (e) {
+              document.getElementById("result").innerHTML += JSON.parse(event.data).value.joke + "<br>";
+          }, false)
+
+          // adding listener when connection openss
+          eventSource.addEventListener("open", function (event) {
+              console.log("connection opened");
+          }, false)
+
+          // Adding listener to error message
+          eventSource.addEventListener("error", function (event) {
+              console.log(event)
+          }, false)
+
+
+          //another custom event
+          eventSource.addEventListener('other', function (e) {
+              // proceed in a different way
+              console.log(e.data);
+          }, false);
+
+          /**
+           * NOTE:: calling this will close the connection
+           * so calling at document load it will never work
+           */
+          eventSource.close();
+      }
+  </script>
+
+  <script>
+
+      /**
+       * Web sockets
+       */
+
+      // checking support in window object
+      if ('WebSocket' in window) {
+          // creating new socket
+          var socket = new WebSocket('ws://echo.websocket.org');
+
+          // checking if the socket is connected or not
+          if (socket.readyState == 0)
+              console.log("Connecting")
+
+          // socket is open and ready to send
+          socket.onopen = function () {
+              if (socket.readyState == 1) {
+                  console.log('Connected')
+                  socket.send("Hey")
+              }
+          }
+
+          // to receive send message from socket
+          socket.onmessage = function (e) {
+              console.log("Server " + e.data)
+          }
+
+          /////////////////////////////////////////
+
+          // triggered when socket is closed
+          socket.onclose = function () {
+              if (socket.readyState == 2) console.log('Connection Closed');
+          };
+
+          // to handle errors
+          socket.onerror = function (err) {
+              console.log('An Error Occurred ' + err);
+          };
+
+      }
+
+  </script>
+</head>
+<body>
+
+
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <img src="./img/logo.png" alt="Logo"/>
+      </div>
+      <div class="col-sm-8">
+        <nav class="navbar">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav">
+              <li class="navbar-btn"><a href="#">Home</a></li>
+              <li class="navbar-btn"><a href="#">Gallery</a></li>
+              <li class="navbar-btn"><a href="#">News</a></li>
+              <li class="navbar-btn"><a href="#">About Us</a></li>
+              <li class="navbar-btn"><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div class="container">
+  <div class="row">
+    <button id="reload" type="button">Reload</button>
+    <iframe id="iframe" src="http://test.dev/cdm.html" width="900" height="100" style="margin: 0 auto;"></iframe>
+  </div>
+</div>
+
+<script>
+
+    /**
+     * Cross Document Messaging
+     */
+
+    // adding click to button
+    document.getElementById("reload").addEventListener("click", reload, false);
+
+    // function called with reload button is clicked
+    function reload(e) {
+        // check if browser supports postmessage
+        if (window.postMessage) {
+            // getting random image to send to different site
+            var array = ['logo.png', 'mobile.png', "video.png"];
+            var rand = array[Math.floor(Math.random() * array.length)];
+
+            // sending message to different site
+            document.getElementById("iframe").contentWindow.postMessage(rand, 'http://test.dev')
+        }
+        else {
+            console.log("cdm not supported")
+        }
+    }
+
+    // added to listen to any message send to the site
+    window.addEventListener("message", function (e) {
+
+        console.log(e.origin)
+        console.log(e.data)
+
+    }, false);
+
+</script>
+
+<div class="jumbo container" id="result">
+  <div class="jumbotron">
+    <h2>Create FREE Website Instantly</h2>
+    <h3><span class="label label-yellow">or</span> Try our Premium Templates</h3>
+
+    <ul>
+      <li>Quick setup and simple interface</li>
+      <li>Rich choice of Templates</li>
+      <li>Try it free for 30 Days</li>
+    </ul>
+
+    <p class="space">
+      <button class="btn btn-green" type="button">Get Started</button>
+    </p>
+  </div>
+</div>
+
+<main class="container">
+  <div class="row middle">
+    <section class="col-sm-4">
+      <h3>About Us</h3>
+      <p>
+        <img src="./img/video.png" alt="Mobile"/>
+      </p>
+      <p class="text-orange">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book
+      </p>
+      <p>
+        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+        unchanged. It was popularised in the 1960s with the release of <span class="text-orange">Letraset sheets </span>containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </p>
+      <p class="btn-pad mt-20">
+        <a class="btn btn-green" href="#">Read More</a>
+      </p>
+    </section>
+
+    <section class="col-sm-4">
+      <h3>Our Services</h3>
+      <p class="text-orange">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      </p>
+      <p>
+        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+        PageMaker including versions of Lorem Ipsum.
+      </p>
+      <ul class="mid-list mt-20">
+        <li>Contrary to popular belief</li>
+        <li>Lorem Ipsum is not simply random text</li>
+        <li>The cites of the word in literature</li>
+        <li>The standard chunk of Lorem Ipsum</li>
+        <li>It was popularised in the 1960s</li>
+        <li>It is a long established fact that a reader</li>
+        <li>Many desktop publishing packages</li>
+      </ul>
+      <p class="btn-pad mt-20">
+        <a class="btn btn-green" href="#">Read More</a>
+      </p>
+    </section>
+
+    <section class="col-sm-4">
+      <h3>Latest News</h3>
+      <p>
+      <h5 class="text-orange">Contrary to popular belief</h5>
+      Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+      PageMaker including versions of Lorem Ipsum.
+      </p>
+      <p class="mt-20">
+      <h5 class="text-orange">Contrary to popular belief</h5>
+      Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+      PageMaker including versions of Lorem Ipsum.
+      </p>
+      <p class="mt-20">
+      <h5 class="text-orange">Contrary to popular belief</h5>
+      Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+      PageMaker including versions of Lorem Ipsum.
+      </p>
+      <p class="mt-20">
+      <h5 class="text-orange">Contrary to popular belief</h5>
+      Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+      PageMaker including versions of Lorem Ipsum.
+      </p>
+      <p class="btn-pad mt-20">
+        <a class="btn btn-green" href="#">Read More</a>
+      </p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <ul class="list-inline">
+      <li class="list-inline-item">Home</li>
+      <li class="list-inline-item">Gallery</li>
+      <li class="list-inline-item">News</li>
+      <li class="list-inline-item">About Us</li>
+      <li class="list-inline-item">Contact</li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
