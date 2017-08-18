@@ -176,7 +176,7 @@
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
-(time) update: going through application cache in HTML5
+
 
 # Sitepoint - Jump Start HTML5
 
@@ -461,3 +461,262 @@ choice for these types of real-time apps.`
 - Data received `data` with message body, `origin` whole url with port, `source` to send sender a response
 - `targetWindow.postMessage(message, targetOrigin)` to send message
 - on different page we can use `event.source.postMessage()` to send message back
+
+
+-----------------------------------------------------------------------------
+
+# CSS3
+- Css3 is broken down into modules
+    - Selectors
+    - Box Model
+    - Backgrounds and Borders
+    - Image Values and Replaced Content
+    - Text Effects
+    - 2D/3D Transformations
+    - Animations
+    - Multiple Column Layout
+    - User Interface
+- these modules can work independently
+- new selectors
+    - `ele[foo^="bar"]` match from the beginning
+    - `ele[foo$="bar"]` match from the end
+    - `ele[foo*="bar"]` match element which contains this text
+- new pseudo classes
+- new styling
+    - border-radius
+    - border-shadow
+- new background property
+    - `background-clip`, clip the background
+    - `background-origin`, where should be placed in padding box, border box, content box
+    - `background-size`, show the size of the bg image
+- css border style, can also be an image
+- column properties
+- column gaps and rules
+
+
+## Round corners
+- `border-radius` is short of `border-{top,bottom,}-{left, right}-radius`
+- values can be four
+    - four values: first value is `top-left`, second is `top-right`, third is `bottom-right`, forth is `bottom-left`
+    - three values: first value is `top-left`, second is `top-right` and `bottom-left`, third is `bottom-right`
+    - two values: first value is `top-left` and `bottom-right`, second is `top-right` and `bottom-left`
+    - one value: all four corners
+
+
+## Border image
+- image to be used as borders
+- the property has 3 parts
+    - the image which will be used as border
+    - where to slice it (value an be `percentage` or `value` and it can totally change the look of border)
+    - define weather the middle part should be stretched or repeated
+
+Note: `border-image` property is actually a shorthand property for the `border-image-source`, `border-image-slice`, `border-image-width`, `border-image-outset` and `border-image-repeat`
+
+
+## Background image
+- `background-image`: support multiple images
+- `background-position`: multiple positions
+- `background-repeat`: multiple repeat values
+- `background` we can add all the properties in one line
+- `background-size` can have values in width, height or can have 2 keywords, `contain` or `cover`
+    - `contain`: will stretch to max inside the container, retaining original aspect ratio
+    - `cover`: wil stretch to max, even going outside the container to match both `width` and `height`
+- `background-origin`: specifies the background image position
+    - `border-box`: position start from top left corner of the border
+    - `padding-box`: start from top left corner of padding
+    - `content-box`: start from top left corner of content
+- `background-clip`: defines the painted area of the background
+    - `border-box`: position start from top left corner of the border
+    - `padding-box`: start from top left corner of padding
+    - `content-box`: start from top left corner of content
+
+
+## Background-color
+- they deal with 4 types of properites
+    - `RGBA colors`: red, green, blue, alpha
+    - `HSL colors`: hue, saturation, light
+    - `HSLA colors`: hue, saturation, light, alpha
+    - `opacity`
+
+
+## Gradients
+- show smooth transition between 2 or more colors
+- there are 2 main types
+    - `linear`: down, up, left, right, diagonal
+    - `radial`: from center
+- `background: linear-gradient(direction, color-stop1, color-stop2, ...)`: direction to start from
+- `background: linear-gradient(angle, color-stop1, color-stop2);`: angle to start from
+- color can also be with opacity
+- `background: radial-gradient(shape, start-color, ..., last-color);`: `shape`
+- `repeating-radial-gradient` can be used to repeat the radial gradient
+
+
+## Shadow Effects
+- adding shadow to element and there are 2 properties
+    - `text-shadow`
+    - `box-shadow`
+- `text-shadow` has 4 values horizontal, vertical, blur and color
+- `text-shadow` support multiple shadows
+- `box-shadow` is same as `text-shadow`
+
+
+## Text
+- `text-overflow`: show/hide text to overflow the container
+- `word-wrap`: same as ide, it can also `break-word`
+- `word-break`: specifies the line breaking rule
+
+
+## Fonts
+- there are different font types, but not all of them are supported by all browsers
+- TrueType Fonts (TTF)/OpenType Fonts (OTF) and The Web Open Font Format (WOFF) are supported by all browsers
+- TrueType Fonts (TTF)
+    - TrueType is a font standard developed in the late 1980s, by Apple and Microsoft. TrueType is the most common font format for both the Mac OS and Microsoft Windows operating systems.
+- OpenType Fonts (OTF)
+    - OpenType is a format for scalable computer fonts. It was built on TrueType, and is a registered trademark of Microsoft. OpenType fonts are used commonly today on the major computer platforms.
+- The Web Open Font Format (WOFF)
+    - WOFF is a font format for use in web pages. It was developed in 2009, and is now a W3C Recommendation. WOFF is essentially OpenType or TrueType with compression and additional metadata. The goal is to support font distribution from a server to a client over a network with bandwidth constraints
+- `font-family`: to select font name
+- `url`: url to font file
+
+
+## Transforms
+- `TRANSFORMS THE ELEMENT IN 2D OR 3D SPACE`
+
+### 2D Transforms
+- `translate()` method moves an element from its current position to X-axis and the Y-axis.
+- `rotate()` method rotates an element clockwise or counter-clockwise
+- `scale()` method increases or decreases the size of an element, according to height and width
+- `skewX()` method skews an element along the X-axis by the given angle.
+- `skewY()` method skews an element along the Y-axis by the given angle.
+- `skew()` method skews an element along the X and Y-axis by the given angles.
+- `matrix()` method combines all the 2D transform methods into one.
+
+
+## Transitions
+- `IT DEALS WITH A START STATE AND END STATE`
+- `Transition is add to main class and another style is added to :hover and when hover transition will work`
+- transitions allow you to change property value smoothly from one state to another
+- transition is specified by 2 thing
+    - css property
+    - time duration (if time is not provided default value is 0)
+- it can have multiple values, coma separated
+- `transition-delay`: delay the starting up time in sec
+- `transformation` can also be used in `transition`
+
+
+## Animations
+- `GIVES MORE CONTROL TO CHANGE ONE STATE TO ANOTHER`
+- it uses keyframes for animation
+- keyframes have styles the element will have for certain time
+- `@keyframe` is a class which defines `from` and and `to` classes
+- each of them have styles
+- this `@keyframe` is attached to an element with `animation-name` and `animation-duration` properties
+- percentage can also be used in case of `from` and `to`
+- `0% {}`, `50% {}`, `100% {}`
+- `animation-delay` to delay the animation
+- `animation-iteration-count` loop count
+- `animation-direction` which direction
+- `animation-timing-function` defines the speed of the animation
+
+
+## Image
+- `border-radius` can be used with images
+- `max-width: 100%; height:auto` will make the image responsive
+- `display: block; margin: auto;` to make the image middle
+- Image overlay examples
+
+## Button
+- use transition to change background color
+- button animation
+
+
+## Pagination
+- different pagination examples
+- and breadcrumb examples
+
+
+## Columns
+- `column-count` will break the block of text into number of columns
+- `column-gap` gaps in columns
+- `column-rule-style` line between the columns
+- `column-rule-width` width of the line
+- `column-rule-color` color of the line
+- `column-span` used with header, which allows the header to expand over number of columns
+- `column-width` width of the column
+
+## User Interface
+- `resize` will resize the element like textarea
+- can be `horizontal`, `vertical` and `both`
+- `outline` is a line outside the border
+- `outline-offset` defines the space between the border and outline
+- `box-sizing: border-box;` allow the element to set with including padding and border
+
+
+## Flexbox
+- it consists of flex container and flex items
+- `display` property is `flex` or `inline-flex`
+- with body property `direction: rtl;` will change the direction from right to left
+- `justify-content` will horizontally align the boxes in different order
+    - `flex-start` align left
+    - `flex-end` align right
+    - `center` align center
+    - `space-between` align wide apart with spaces between the boxes
+    - `space-around` align wide apart with same amount of spaces on start and end of the boxes
+- `align-items` vertically align the boxes
+    - `stretch` will stretch the boxes to the bottom of the parent box
+    - `flex-start` move the boxes at the top of the parent container
+    - `flex-end` move the boxes at the bottom of the parent container
+    - `center` move the boxes at the middle of the parent container
+    - `baseline` move the boxes at the top of the parent container, but the align will be according to the text of inside the items
+- `flex-wrap` to wrap the elements
+    - `nowrap` not to wrap
+    - `wrap` to wrap
+    - `wrap-reverse`
+- `align-content` it modifies `flex-wrap` but works same as `align-items`, it works vertically
+    - `stretch` will stretch the elements vertically
+    - `flex-start` will align all the elements vertically on the top
+    - `flex-end` will align the elements vertically on the bottom
+    - `center` will align the elements vertically at the center
+    - `space-between` will align the elements vertically with equal space between the elements
+    - `space-around` will align the elements vertically with equal space between the elements and around it
+- `order` setting up order of the elements
+- `margin: auto` will bring the element to the center of the page, vertically and horizontally
+- `margin-right: auto` on the first flex item. This will cause all the extra space to be absorbed to the right of that element
+- `align-self` will align the element vertically
+    - `stretch` will stretch the boxes to the bottom of the parent box
+    - `flex-start` move the boxes at the top of the parent container
+    - `flex-end` move the boxes at the bottom of the parent container
+    - `center` move the boxes at the middle of the parent container
+    - `baseline` move the boxes at the top of the parent container, but the align will be according to the text of inside the items
+- `flex` specifies the with of the items, same as `col-span`
+
+
+## Media
+- Css2 media queries where based on devices computer screen, tv screens, printers, handheld
+- Css3 looks at the compatibility of the device
+    - the will check height and width of viewport of the device
+    - the will check the with and height of the device
+    - orientation
+    - resolution
+- media type
+    - `all` for all devices
+    - `print` for printers
+    - `screen` used for computer, tablet, smart-phones
+    - `speech` used for screen reader
+
+
+-----------------------------------------------------------------------------
+
+
+# Responsive
+- `meta` will have property `width=device-width` to set the width to maximum width
+- `initial-scale=1.0` will set initial zoom to 1
+
+
+## Rules
+- elements should not exceed the width of viewport
+- content should not rely on viewport to render well
+- using media query to apply styling
+- mobile first
+- `max-width` for image will scale it to original size and but not more then that
+-
